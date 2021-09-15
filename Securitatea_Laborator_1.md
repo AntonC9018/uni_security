@@ -6,7 +6,6 @@ A elaborat: **Curmanschii Anton, IA1901**
   - [Introducere](#introducere)
   - [Sarcina 1.](#sarcina-1)
   - [Sarcina 2](#sarcina-2)
-  - [](#)
 
 ## Introducere
 
@@ -18,7 +17,7 @@ a) Să se creeze două utilizatori noi:
 - `regular_user` care să aibă drepturile a unui utilizator fără privilegii speciale;
 - `user_admin` care să aibă privilegii speciale de administrator.
 
-În windows 10 putem crea utilizatori noi fiind logat ca administrator printr-un meniu special.
+În Windows 10 putem crea utilizatori noi fiind logat ca administrator printr-un meniu special.
 Am dat users în search pentru a găsi acest meniu:
 
 ![Users Search](images/lab1_search_users.png)
@@ -31,7 +30,7 @@ Aici am creat acei 2 utilizatori și i-am dat privilegiile corespunzătoare:
 ![Created users](images/lab1_users_created.png)
 
 
-b) Să se creeze un folder `Test` și să la Security să resticte accesul la acest folder pentru `regular_user`.
+b) Să se creeze un folder `Test` și la Security să resticte accesul la acest folder pentru `regular_user`.
 
 Dacă încercăm să creăm acest folder într-un loc pe sistem de fișiere unde utilizatorul normal deja nu are acces, el nici nu apare în lista de utilizatori în meniul Security (sunt logat din contul meu Anton):
 
@@ -54,11 +53,11 @@ Acum ne relogăm ca `regular_user` și încerăm să accesăm fișierul. Ne dă 
 
 În sarcina se cere ca utilizatorul `regular_user` să fie în grupul Users și să se modifică întregul grup, însă în exemplul de mai sus am modificat permisiunile doar acelui singur utilizator.
 
-Pentru a accesa grupurile în windows cautăm `Computer Management` în search. Deschidem aplicația.
+Pentru a accesa grupurile în Windows cautăm `Computer Management` în search. Deschidem aplicația.
 
 ![](images/lab1_computer_management.png)
 
-Aici putem accesa grupele în `Local Users and Groups` -> `Groups`. 
+Aici putem accesa grupurile în `Local Users and Groups` -> `Groups`. 
 Aici găsim și grupul Users care deja îi conține pe ambii utilizatori noi.
 
 ![](images/lab1_new_users_in_group.png)
@@ -84,12 +83,12 @@ Vom face același lucru la, zicem, mapa Steam, la care Users totuși apare.
 Windows-ul începe să schimbe individual toate subfișierile și submapele. Opresc.
 
 
-Am găsit cum să adaug grupele în lista grupelor vizibile pentru un obiect (fișier sau folder) dat.
+Am găsit cum să adaug grupurile în lista grupurilor vizibile pentru un obiect (fișier sau folder) dat.
 În meniul Security selectăm Edit și Add. Apare meniul de selectare a entității de adăugat (un utilizator sau un grup):
 
 ![](images/lab1_add_group.png)
 
-Aici scriem numele grupei în text area.
+Aici scriem numele grupurii în text area.
 
 ![](images/lab1_add_group2.png)
 
@@ -123,7 +122,4 @@ Deselectam Deny la Read la Users. Acum `regular_user` ar trebui să putea să de
 
 Nu contează ce anume permisiune îi dăm, va lucra asemănător și cu Modify șu cu Write. Ideea am demonstrat-o.
 
-Aici ca să înțeleg mai bine am decis să citesc documentarea Microsoft referitor la Security.
-
-
-## 
+Aici ca să înțeleg mai bine am decis să citesc ![documentarea Microsoft referitor la Security](https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/access-control).
