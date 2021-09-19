@@ -122,4 +122,5 @@ Deselectam Deny la Read la Users. Acum `regular_user` ar trebui să putea să de
 
 Nu contează ce anume permisiune îi dăm, va lucra asemănător și cu Modify șu cu Write. Ideea am demonstrat-o.
 
-Aici ca să înțeleg mai bine am decis să citesc ![documentarea Microsoft referitor la Security](https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/access-control).
+Aici ca să înțeleg mai bine am decis să citesc ![documentarea Microsoft referitor la Security](https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/access-control). 
+[Aici](https://www.tenforums.com/tutorials/88305-enable-disable-inherited-permissions-objects-windows.html) se descrie moștenirea. Se dovedește că este opțională.
