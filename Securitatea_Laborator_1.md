@@ -1,8 +1,8 @@
-# Lucrarea de laborator Nr.1 la Securitatea
+# Lucrarea de laborator Nr.1 la Securitatea SO
 
 A elaborat: **Curmanschii Anton, IA1901**
 
-- [Lucrarea de laborator Nr.1 la Securitatea](#lucrarea-de-laborator-nr1-la-securitatea)
+- [Lucrarea de laborator Nr.1 la Securitatea SO](#lucrarea-de-laborator-nr1-la-securitatea-so)
   - [Introducere](#introducere)
   - [Sarcina 1](#sarcina-1)
   - [Sarcina 2](#sarcina-2)
