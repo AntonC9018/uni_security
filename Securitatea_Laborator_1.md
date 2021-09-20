@@ -9,6 +9,7 @@ A elaborat: **Curmanschii Anton, IA1901**
   - [Sarcina 3](#sarcina-3)
   - [Sarcina 4](#sarcina-4)
   - [Sarcina 5](#sarcina-5)
+  - [Concluzii](#concluzii)
 
 ## Introducere
 
@@ -112,11 +113,11 @@ Verificăm.
 
 Lucrează cum am anticipat.
 
-a) Efectuați din nou comutarea utilizatorilor. Sub contul de `cont_administrator` adauga la lista 
-de utilizatori accesul la fișiere pentru contul `cont_utilizator` și dați-i permisiunea de a efectua 
-modificări (Modify). Încercați din nou să creați folderul.
+> a) Efectuați din nou comutarea utilizatorilor. Sub contul de `cont_administrator` adauga la lista 
+> de utilizatori accesul la fișiere pentru contul `cont_utilizator` și dați-i permisiunea de a efectua 
+> modificări (Modify). Încercați din nou să creați folderul.
 
-Deselectam Deny la Read la Users. Acum `regular_user` ar trebui să putea să deschidă folderul, dar nu să scrie.
+Deselectăm Deny la Read la Users. Acum `regular_user` ar putea să deschidă folderul, dar nu a scrie.
 
 ![](images/lab1_read_no_write.png)
 
@@ -143,9 +144,12 @@ Tot a trecut fără avertismente.
 ![](images/lab1_photos_users_remove.png)
 
 
-Încerc același lucru iară cu folderul Test însă cu grupul Everyone. Deja a lucrat cum trebuia.
+Încerc același lucru iară cu folderul Test însă cu grupul Everyone. 
+Deja a lucrat cum trebuia.
 
 ![](images/lab1_delete_everyone.png)
+
+Aceasta s-a întâmplat, deoarece permisiunile pentru Everyone au fost moștenite de la Drive-ul E. 
 
 
 > În scopul de a anula moștenirea ar trebui în fila Security, să faceți clic pe Advanced. 
@@ -190,7 +194,7 @@ Cum am așteptat, utilizatorul `regular_user` n-are nici o permisiune, deoarece 
 > Introduceţi la membrii grupului TestGroup utilizatorul TestUser. 
 > Uitaţi-vă soluție eficientă pentru utilizatorul TestUser.
 
-Deci în primul rând este necesar să creăm un grup pentru test adaugând în ea utiliztorul `regular_user`.
+Deci în primul rând este necesar să creăm un grup pentru test adaugând în el utilizatorul `regular_user`.
 
 ![](images/lab1_create_test_group.png)
 
@@ -199,11 +203,11 @@ Deci în primul rând este necesar să creăm un grup pentru test adaugând în 
 Am adaugat grupul în lista Security și am selectat Full Control. 
 Prin urmare, utilizatorul `regular_user` are acces total la folderul.
 
-Acum am resetat permisiunile apasând Enable inheritance și ștergând ACL-urile copiate anerior.
+Acum am resetat permisiunile apasând Enable inheritance și ștergând ACE-urile copiate anerior.
 
 ![](images/lab1_permissions_reset.png)
 
-Acum am adăugat grupul `test_group` și am dat deny la Full Access:
+Acum am adăugat grupul `test_group` și am dat deny la Full Control:
 
 ![](images/lab1_deny_all_test_group.png)
 
@@ -218,8 +222,8 @@ Verificând Effective permissions lui `regular_user` m-am asigurat că n-are acc
 > Apoi, încercați să deschideți un folder și să creaţi un document. 
 > Cum putem explica acest rezultat (indiciu este la începutul descrierii lucrării de laborator)?
 
-Am făcut pași de mai sus fiind nelogat, dar ideea este că Acces token-ul acelui utilizator nu va conține informația despre grupul nou până la moment când utilizatorul reloghează, primind un nou Acces token, care deja are conține această informație.
-De aceea, permisiunile grupului `test_group` nu s-ar aplica la acest utilizator inițial, deci ar putea accesa folderul, datorită grupului Everyone, iar după ce reloghează, deja s-ar aplica permisiunile din grupul nou (Deny full access), deci n-ar putea face nimic cu folderul.
+Am făcut pașii de mai sus fiind nelogat, dar ideea este că Acces Token-ul acelui utilizator nu va conține informația despre grupul nou până la moment când utilizatorul reloghează, primind un nou Acces Token care deja ar conține această informație.
+De aceea, permisiunile grupului `test_group` inițial nu s-ar aplica la utilizator, deci ar putea accesa folderul, datorită grupului Everyone, iar după ce reloghează, deja s-ar aplica permisiunile din `test_group` (Deny full access), deci n-ar putea face nimic cu folderul.
 
 Astfel am înțeles eu.
 
@@ -236,3 +240,13 @@ Putem accesa folderul după ce am schimbat permisiunile grupului `test_group`.
 ![](images/lab1_i_still_own_the_image_within.png)
 
 Pentru aceasta trebuie să bifăm `Replace owner on subcontainers and objects`, cum se descrie în [această sursă](https://www.laptopmag.com/articles/take-ownership-folder-windows-10-using-file-explorer). Însă eu nu primesc așa opțiune.
+
+
+
+## Concluzii
+
+În scopul acestei lucrări de laborator:
+- am studiat cum lucrează permisiunile pe Windows; 
+- am înțeles conceptele de Access Token, ACL (Access Control List), ACE (Access Control Entry), SID (Security Identifier); 
+- am studiat că ele lucrează datorită sistemului de fișiere NTFS care permite informația suplimentară la fiecare obiect;
+- am studiat conceptul de Security Principal (utilizator, grup, proces, sau chiar un thread).
