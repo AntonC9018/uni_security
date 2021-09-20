@@ -4,18 +4,21 @@ A elaborat: **Curmanschii Anton, IA1901**
 
 - [Lucrarea de laborator Nr.1 la Securitatea](#lucrarea-de-laborator-nr1-la-securitatea)
   - [Introducere](#introducere)
-  - [Sarcina 1.](#sarcina-1)
+  - [Sarcina 1](#sarcina-1)
   - [Sarcina 2](#sarcina-2)
+  - [Sarcina 3](#sarcina-3)
+  - [Sarcina 4](#sarcina-4)
+  - [Sarcina 5](#sarcina-5)
 
 ## Introducere
 
 Am un laptop pe Windows 10. Am un cont de administrator al meu la care am acces — Anton.
 
-## Sarcina 1.
+## Sarcina 1
 
-a) Să se creeze două utilizatori noi: 
-- `regular_user` care să aibă drepturile a unui utilizator fără privilegii speciale;
-- `user_admin` care să aibă privilegii speciale de administrator.
+> a) Să se creeze două utilizatori noi: 
+> - `regular_user` care să aibă drepturile a unui utilizator fără privilegii speciale;
+> - `user_admin` care să aibă privilegii speciale de administrator.
 
 În Windows 10 putem crea utilizatori noi fiind logat ca administrator printr-un meniu special.
 Am dat users în search pentru a găsi acest meniu:
@@ -30,7 +33,7 @@ Aici am creat acei 2 utilizatori și i-am dat privilegiile corespunzătoare:
 ![Created users](images/lab1_users_created.png)
 
 
-b) Să se creeze un folder `Test` și la Security să resticte accesul la acest folder pentru `regular_user`.
+> b) Să se creeze un folder `Test` și la Security să resticționeze accesul la acest folder pentru `regular_user`.
 
 Dacă încercăm să creăm acest folder într-un loc pe sistem de fișiere unde utilizatorul normal deja nu are acces, el nici nu apare în lista de utilizatori în meniul Security (sunt logat din contul meu Anton):
 
@@ -51,7 +54,7 @@ Acum ne relogăm ca `regular_user` și încerăm să accesăm fișierul. Ne dă 
 
 ## Sarcina 2
 
-În sarcina se cere ca utilizatorul `regular_user` să fie în grupul Users și să se modifică întregul grup, însă în exemplul de mai sus am modificat permisiunile doar acelui singur utilizator.
+> În sarcina se cere ca utilizatorul `regular_user` să fie în grupul Users și să se modifice întregul grup, însă în exemplul de mai sus am modificat permisiunile doar acelui singur utilizator.
 
 Pentru a accesa grupurile în Windows cautăm `Computer Management` în search. Deschidem aplicația.
 
@@ -124,3 +127,112 @@ Nu contează ce anume permisiune îi dăm, va lucra asemănător și cu Modify �
 
 Aici ca să înțeleg mai bine am decis să citesc [documentarea Microsoft referitor la Security](https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/access-control). 
 [Aici](https://www.tenforums.com/tutorials/88305-enable-disable-inherited-permissions-objects-windows.html) se descrie moștenirea. Se dovedește că este opțională.
+
+## Sarcina 3
+
+> Sub contul `cont_administrator` să ștergem grupul Users. 
+> Nu veți putea face acest lucru, va apărea avertismentul că aceste permisiuni sunt moștenite de la obiectul părinte.
+
+Îm cazul meu s-a șters fără nici un advertisment, deoarece am adăugat grupul Users de sine stătător.
+
+![](images/lab1_users_deleted.png)
+
+Încerc același lucru pentru folderul Photo. 
+Tot a trecut fără avertismente.
+
+![](images/lab1_photos_users_remove.png)
+
+
+Încerc același lucru iară cu folderul Test însă cu grupul Everyone. Deja a lucrat cum trebuia.
+
+![](images/lab1_delete_everyone.png)
+
+
+> În scopul de a anula moștenirea ar trebui în fila Security, să faceți clic pe Advanced. 
+> În fereastra apărută se observă că este inclusă proprietatea `Include inheritable permissions from this object's parent`. 
+
+În Windows 10 este un pic diferit. 
+`Include inheritable permissions from this object's parent` parcă este schimbat aici la butonul `Disable inheritance`, ceea ce presupune că setarea curentă este `Enable inheritance`.
+
+> Acest lucru înseamnă că obiectul moștenește ACL de la părinte, dar în ACL-ul propriu pot fi adăugate doar pentru permisiuni sau interdicții. 
+> Dacă faceți clic pe butonul Edit și resetați această bifă, va apărea întrebarea, 
+> ce să se facă cu lista de moștenire - se poate face copiate (Copy) în ACL obiectului, sau să fie eliminat (Eliminate). 
+> Cel mai des, pentru a nu se pierde setările, se efectuiază copiere, iar apoi lista este corectată.
+
+![](images/lab1_disable_inheritance.png)
+
+Și acum grupul se șterge cu succes:
+
+![](images/lab1_no_everyone_group.png)
+
+## Sarcina 4
+
+> După cum s-a menționat mai devreme, în determinarea permisiunilor de acces se iau în vedere activarea sau dezactivarea 
+> drepturilor, atât pentru utilizator cît și pentru toate grupurile din care face parte.  
+> În scopul de a afla permisul valabil (efectiv), aveți posibilitatea să utilizați fila  Effective Permissions. 
+> Tastînd tasta Select, puteți selecta un utilizator sau grup pentru care va fi afișat efectiv persmisiunea. 
+
+Am citit [această sursă](https://www.vyapinsoftware.com/blog/understanding-ntfs-permissions-how-to-report-effective-permissions-on-files-and-folders) pentru a înțelege ce înseamnă Effective Permissions.
+
+> Effective permissions are the resultant permissions a User or a Group has towards an object. Effective permissions are the combination of Explicit and Inherited Permission entries and the restrictive permissions apply while accessing object.
+
+Deci aceasta de fapt înseamnă "permisiunile care se aplică curent".
+
+> Verificați dacă utilizatorul TestUser, la dosarul în care se desfășoară activitatea, a avut permisiunea de a modifica. 
+> Verificați rezoluția efectivă curentă.
+
+Cum am așteptat, utilizatorul `regular_user` n-are nici o permisiune, deoarece le primea doar din grupul Everyone.
+
+![](images/lab1_regular_user_effective_permissions_none.png)
+
+> Adauga la permisiunile folder-ului lista pentru interzicerea grupului TestGroup, orice acces 
+> (selectare Deny permisiunea de Control total).  
+> Introduceţi la membrii grupului TestGroup utilizatorul TestUser. 
+> Uitaţi-vă soluție eficientă pentru utilizatorul TestUser.
+
+Deci în primul rând este necesar să creăm un grup pentru test adaugând în ea utiliztorul `regular_user`.
+
+![](images/lab1_create_test_group.png)
+
+![](images/lab1_proof_group_created.png)
+
+Am adaugat grupul în lista Security și am selectat Full Control. 
+Prin urmare, utilizatorul `regular_user` are acces total la folderul.
+
+Acum am resetat permisiunile apasând Enable inheritance și ștergând ACL-urile copiate anerior.
+
+![](images/lab1_permissions_reset.png)
+
+Acum am adăugat grupul `test_group` și am dat deny la Full Access:
+
+![](images/lab1_deny_all_test_group.png)
+
+Verificând Effective permissions lui `regular_user` m-am asigurat că n-are acces la folderul.
+
+![](images/lab1_regular_user_effective_permissions_none.png)
+
+
+> Comutaţi-vă la sesiune utilizatorului TestUser. 
+> Încercați să deschideți folderul și să creaţi un document. 
+> Log off sesiunea TestUser și conectați-vă din nou. 
+> Apoi, încercați să deschideți un folder și să creaţi un document. 
+> Cum putem explica acest rezultat (indiciu este la începutul descrierii lucrării de laborator)?
+
+Am făcut pași de mai sus fiind nelogat, dar ideea este că Acces token-ul acelui utilizator nu va conține informația despre grupul nou până la moment când utilizatorul reloghează, primind un nou Acces token, care deja are conține această informație.
+De aceea, permisiunile grupului `test_group` nu s-ar aplica la acest utilizator inițial, deci ar putea accesa folderul, datorită grupului Everyone, iar după ce reloghează, deja s-ar aplica permisiunile din grupul nou (Deny full access), deci n-ar putea face nimic cu folderul.
+
+Astfel am înțeles eu.
+
+## Sarcina 5
+
+> Să petrecem transferul proprietăţii grupui TestGroup, care include utilizatorul TestUser. 
+> Accesând acest cont, modificați permisiunile, astfel încât TestUser ar putea lucra cu dosarul.
+
+![](images/lab1_group_owns_folder.png)
+
+Putem accesa folderul după ce am schimbat permisiunile grupului `test_group`. 
+Însă cu toate că proprietarul folderului se consideră utilizatorul `regular_user`, nu este considerat proprietarul imaginii în acest folder, de aceea nu poate s-o acceseze.
+
+![](images/lab1_i_still_own_the_image_within.png)
+
+Pentru aceasta trebuie să bifăm `Replace owner on subcontainers and objects`, cum se descrie în [această sursă](https://www.laptopmag.com/articles/take-ownership-folder-windows-10-using-file-explorer). Însă eu nu primesc așa opțiune.
