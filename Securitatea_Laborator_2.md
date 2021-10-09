@@ -5,7 +5,7 @@ A elaborat: **Curmanschii Anton, IA1901**
 
 ## Sarcina
 
-** Scopul lucrării:**
+**Scopul lucrării:**
  
 1. Studierea principiului de funcționare a sistemelor de management al parolelor (KeePass, eWallet, LastPass, 1Password). Analiza parametrilor de funcționare a lor. 
 2. Descrierea comparativă a sistemelor de management al parolelor.
