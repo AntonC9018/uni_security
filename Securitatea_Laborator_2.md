@@ -1,4 +1,4 @@
-# Lucrarea de laborator Nr.1 la Securitatea SO
+# Lucrarea de laborator Nr.2 la Securitatea SO
 
 A elaborat: **Curmanschii Anton, IA1901**
 
