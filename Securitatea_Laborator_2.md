@@ -12,8 +12,8 @@ A elaborat: **Curmanschii Anton, IA1901**
 3. Descrierea principiului de funcționare a sistemului KeePass. Studierea funcționalității sistemului KeePass. Autentificarea la servicii diferite (Web şi aplicații) utilizând KeePass.
 
 
-Remarcă: Descrierea comparativă a sistemelor de management al parolelor trebuie să se axeze 
-pe următoarele principii: 
+Remarcă: Descrierea comparativă a sistemelor de management al parolelor trebuie să se axeze pe următoarele principii: 
+
 * Soft gratuit / licențiat / încorporat etc.,
 * Varietatea sistemelor de operare / browser-elor cu care sunt compatibile,
 * Varietatea serviciilor cu care sunt compatibile (aplicații Web etc.),
@@ -27,9 +27,6 @@ pe următoarele principii:
 ## KeePass
 
 [Pagina web](https://keepass.info/).
-
-
-**În scurt:**
 
 * Soft întreg gratuit și open-source.
 * Windows, Linux, Mac + datorită faptului că este open-source există porturi neoficiale pe Android, iOS.
@@ -112,3 +109,79 @@ Nu este clar dacă este posibil selectarea unelor date din baza de date.
 
 [Permite dezvoltarea plugin-urilor în C#](https://keepass.info/help/v2_dev/plg_index.html).
 
+
+## eWallet
+
+[Pagina web](https://www.iliumsoft.com/ewallet/).
+
+* Windows, MacOS, Linux, Android, iOS.
+* Plătit (20$).
+* Include aceleași capacități ca și KeePass: generarea parolelor, o bază de date criptată.
+* Include sincronizarea cloud (KeePass nu a avut aceasta).
+* Pare că are [integrarea mai bună cu browser-ul](https://www.iliumsoft.com/dl/doc/eWallet%20for%20Windows.pdf#page=24&zoom=auto,-91,355).
+* Pare că nu are integrarea cu terminalul (n-am găsit aceasta în [manualul](https://www.iliumsoft.com/dl/doc/eWallet%20for%20Windows.pdf)).
+* Interfața asemănător de intuitivă ca și la KeePass, iconițele sunt mai largi (probabil bine pentru persoanele cu viziune slabă).
+
+
+## LastPass
+
+[Pagina web](https://lastpass.com).
+
+* Rulează în browser; Android, iOS.
+* Gratuit (capacități limitate), Premium este 36$ anual.
+* Păstrată numai pe cloud-ul lor. Baza de date nu poate fi descărcată în formatul criptat (însă permite descarcarea unui csv cu parolele decriptat).
+* Include generarea parolelor și criptarea cu AES.
+* Integrarea cu browser-ul este mai bună (clar, este o aplicație web).
+* Interfața tot este simplă.
+
+Unica problemă care eu am observat că aplicația este prea lentă. 
+Este clar că e în browser și va fi necesar mai lentă, însă este prea lentă în unele cazuri.
+Dacă apăsați `Account Settings`, de exemplu, trebuie să așteptați 5 secunde ca fereastra corespunzătoare să apară.
+
+Integrarea cu câmpurile pentru parole pe pagini web este bună.
+Programul rulează ca o extensiune pentru browser.
+
+![](images/lab2_lastpass_no_passwords.png)
+
+![](images/lab2_lastpass_new_item.png)
+
+![](images/lab2_lastpass_card.png)
+
+![](images/lab2_lastpass_filled_in.png)
+
+**Concluzia:** Introduce parolele stocate aproape atât de bine ca însăși browser-ul, dar le mai criptează. 
+Parolele sunt stocate pe cloud-ul lor, ce este mai convenabil de utilizat.
+Este integrarea automată pe diferite device-uri (vă logați, și deja aveți parolele).
+Însă interfața este prea lentă în unele cazuri.
+
+
+## 1Password
+
+[Pagina web](https://1password.com/).
+
+* Plătit (36$ anual).
+* Rulează în browser; Windows, MacOS, Linux, Android, iOS.
+* Integrarea cu câmpurile parolelor și login-urilor în browser.
+* Cea mai user-friendly după opinia mea.
+* Destinată mai mult companiilor pentru protecția parolelor.
+* Criptarea parolelor cu AES, parola master criptează și decriptează parolele, ca și în aplicațiile precedente.
+* API Integrarea excelentă pentru dezvoltatori.
+* Sincronizarea automată.
+
+**Concluzia:** Mai mult orientat la companii, însă pare ușor de utilizat și pentru un utilizator obișnuit.
+Este foarte asemănător cu LastPass, dar mai are variantele aplicațiilor desktop.
+
+
+> Dacă suprapun cu librăriile GUI: îmi pare că KeePass este ca GTK, 1Password ca Qt, iar LastPass ca Electron.
+
+
+## Concluziile
+
+Din aceste 4 ar utiliza LastPass, deoarece este gratuit și rulează în browser. 
+Noi utilizăm parolele cel mai des în browser.
+
+KeePass tot este gratuit și în principiu are mai multe capacități și este mai flexibil, însă nu este tare comod, din punct de vedere că nu are sincronizare și totul trebuie să fie setat manual.
+
+Între eWallet și 1Password aș selecta 1Password, deoarece îmi pare că are mai multe capacități și mai multă documentare.
+
+Toate aplicațiile lucrează pe baza aceluiași principiu, descris la KeePass, utilizând o parolă master și criptând parolele cu AES.
