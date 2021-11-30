@@ -2,6 +2,18 @@
 
 A elaborat: **Curmanschii Anton, IA1901**
 
+- [Lucrarea de laborator Nr.2 la Securitatea SO](#lucrarea-de-laborator-nr2-la-securitatea-so)
+  - [Sarcina](#sarcina)
+  - [KeePass](#keepass)
+    - [Modul de funcționare](#modul-de-funcționare)
+    - [Utilizarea parolelor](#utilizarea-parolelor)
+    - [Interfața](#interfața)
+    - [Lucrul prin comenzi](#lucrul-prin-comenzi)
+  - [eWallet](#ewallet)
+  - [LastPass](#lastpass)
+  - [1Password](#1password)
+  - [Concluziile](#concluziile)
+
 
 ## Sarcina
 
